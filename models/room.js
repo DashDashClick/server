@@ -1,10 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Room = sequelize.define('Room', {
+  class Room extends sequelize.Sequelize.Model {
+    static associate(models) {
+      // associations can be defined here
+    }
+  }
+
+  Room.init({
     name: DataTypes.STRING
-  }, {});
-  Room.associate = function(models) {
-    // associations can be defined here
-  };
+  }, { sequelize });
   return Room;
 };
