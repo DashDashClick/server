@@ -66,8 +66,8 @@ io.on('connection', function(socket){
     socket.join(payload.id.id,()=>{
       // io.to(payload.id).emit('joined', payload)
       scores.push(payload)
-      // console.log(scores.length, 'ini panjangnya');
-      // console.log(scores, 'ini scorenya');
+      console.log(scores.length, 'ini panjangnya');
+      console.log(scores, 'ini scorenya');
       if(scores.length > 1){
         // scores.sort(function(a, b) {
           //   return b[1] - a[1];
@@ -75,7 +75,11 @@ io.on('connection', function(socket){
           let urut = scores.sort((a, b) => (a.score < b.score) ? 1 : -1)
           console.log(urut, 'ini scoresnya');
         
-        io.to(payload.id.id).emit('finalScore', scores[0])
+          if(urut[0].score == urut[1].score && urut[0].username !== urut[1].username){
+            io.to(payload.id.id).emit('finalScore', scores[0], 'draw')
+          }else{
+            io.to(payload.id.id).emit('finalScore', scores[0], 'pemenangnya')
+          }
       }
     })
   })
