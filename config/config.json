@@ -1,11 +1,10 @@
 {
   "development": {
-    "username": "postgre",
-    "password": "postgre",
-    "database": "gammy",
+    "username": "ninoloid",
+    "password": "ninoloid",
+    "database": "dashdashclick",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "operatorsAliases": false
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
